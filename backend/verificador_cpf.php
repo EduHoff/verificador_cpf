@@ -7,12 +7,6 @@ $aux;
 $result;
 
 //PRIMEIRA ETAPA
-if (preg_match('/^(\d)\1{10}$/', $cpf)) {
-    $result = false;
-}
-
-
-//SEGUNDA ETAPA
 for ($i = 0; $i < 9; $i++) {
     $digito = (int)$cpf[$i];
     $peso = 10 - $i;
@@ -28,8 +22,7 @@ if($aux == $cpf[9]){
 }
 
 
-
-//TERCEIRA ETAPA
+//SEGUNDA ETAPA
 $aux = 0;
 for ($i = 0; $i < 10; $i++) {
         $digito = (int)$cpf[$i];
@@ -42,6 +35,11 @@ $aux = ($aux * 10) % 11;
 if($aux == $cpf[10]){
     $result = true;
 }else{
+    $result = false;
+}
+
+//TERCEIRA ETAPA
+if (preg_match('/^(\d)\1{10}$/', $cpf)) {
     $result = false;
 }
 
